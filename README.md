@@ -98,8 +98,7 @@ El coeficiente de variación es: 395.03291777363165 %
   print(f"la curtosis es igual a {curtosis}")
   print(f"el coeficiente de variacion es igual a {coefvar} %")
 ```
-Obteniendo:
-
+- Obteniendo:
 media igual a 0.040704000000000004
 
 mediana igual a 0.0
@@ -108,6 +107,10 @@ la desviacion estandar de la poblacion es igual a 0.16079419885058044
 
 la desviacion estandar de la muestra es igual a 0.16081028068278053
 
-la curtosis es igual a 14.97171146732827
-
 el coeficiente de variacion es igual a 395.0329177736351 %
+
+la curtosis es igual a 14.97171146732827
+```
+
+## Parte B 
+Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. Posteriormente, se realizó un código en Python para visualizar la señal y evidenciar el análisis estadístico . Finalmente, los resultados obtenidos se compararon con los de la señal registrada en la primera parte del laboratorio. 
