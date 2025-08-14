@@ -1,4 +1,4 @@
-# Informe-Laboratorio-1: Analisis 
+# Informe-Laboratorio-1: Análisis Estadístico de la señal
 ## Resumen
 En el presente laboratorio se desea analizar señales biológicas mediante el programa python, realizando los cálculos estadísticos de dichas señales y realizando las gráficas correspondientes para facilitar y optimizar el análisis de datos.
 
