@@ -115,4 +115,4 @@ El coeficiente de variación es: 395.03291777363165 %
   la curtosis es igual a 14.97171146732827
 
 ## Parte B
-Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. Posteriormente, se realizó un código en Python para visualizar la señal y evidenciar el análisis estadístico . Finalmente, los resultados obtenidos se compararon con los de la señal registrada en la primera parte del laboratorio. 
+Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. Posteriormente, se realizó un código en Python para visualizar la señal y evidenciar el análisis estadístico. Finalmente, los resultados obtenidos se compararon con los de la señal registrada en la primera parte del laboratorio. 
