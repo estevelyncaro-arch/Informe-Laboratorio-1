@@ -114,5 +114,34 @@ El coeficiente de variación es: 395.03291777363165 %
 
   la curtosis es igual a 14.97171146732827
 
+  Finalmente se realiza el histograma de los datos y se le adiciona la función de probabilidad como se muestra a continuación:
+- Histograma:
+  ´´´python
+  plt.hist(dedo)
+  plt.grid()
+  plt.xlabel("Voltaje (mV)")
+  plt.ylabel("Frecuencia")
+  plt.title("Histograma A")
+  plt.show()
+  ´´´
+Obteniendo el siguiente gráfico:
+<img width="580" height="455" alt="image" src="https://github.com/user-attachments/assets/e2f33e8a-c88a-4f06-a338-8e7ff9829529" />
+
+- Histograma con función de probabilidad:
+  ´´´python
+  plt.hist(dedo,bins=30, density=True, alpha=0.8, color='pink')
+  kde = gaussian_kde(dedo)
+  x_vals = np.linspace(min(dedo), max(dedo), 1000)
+  plt.plot(x_vals, kde(x_vals), color='cyan', linewidth=2)
+  plt.grid()
+  plt.xlabel("Voltaje (mV)")
+  plt.ylabel("Densidad de probabilidad")
+  plt.title("Histograma A con función de probabilidad")
+  plt.show()
+  ´´´
+Obteniendo el siguiente gráfico:
+<img width="554" height="455" alt="image" src="https://github.com/user-attachments/assets/70ea64fd-04d5-44fd-b9f9-321945e4fb87" />
+
+  
 ## Parte B
 Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. Posteriormente, se realizó un código en Python para visualizar la señal y evidenciar el análisis estadístico. Finalmente, los resultados obtenidos se compararon con los de la señal registrada en la primera parte del laboratorio. 
