@@ -17,7 +17,7 @@ from scipy.stats import gaussian_kde
 
 ## Parte A
 
-En este primer apartado tomamos una señal electrocardiográfica de la plataforma Physionet, la cual estaba compuesta por varias señales por lo que seleccionamos una única señal para poder realizar un análisis de datos más preciso. Para estu realizamos las siguientes líneas de código:
+En este primer apartado tomamos una señal electrocardiográfica de la plataforma Physionet, la cual estaba compuesta por varias señales por lo que seleccionamos una única señal para poder realizar un análisis de datos más preciso. Para este realizamos las siguientes líneas de código:
 ```python
 signals,fields=wfdb.rdsamp('/content/43541326')
 signals
@@ -152,7 +152,144 @@ Obteniendo el siguiente gráfico:
 
   
 ## Parte B
-Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. Posteriormente, se realizó un código en Python para visualizar la señal. 
+Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. 
+
 Utilizando las siguientes librerias 
+  ```python
+import matplotlib.pyplot as plt
+import pandas as pd
+  ```
+
+Realizando asi el siguiente codigo:
+
+  ```python
+data = pd.read_csv("/content/ecg_reconstruido_segmento.txt", sep="\t", header=None, names=["Tiempo", "ECG"])
+
+plt.plot(data["Tiempo"], data["ECG"])
+plt.title("Señal ECG Reconstruida")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud (mV)")
+plt.grid(True)
+plt.show()
+ ```
+ 
+Para así lograr la siguiente grafica:
+<img width="805" height="583" alt="image" src="https://github.com/user-attachments/assets/8600bbf6-15af-40f9-8d93-fe1d9402d9d0" />
+
+Para luego realizar los calculos paso a paso como en la parte A:
+  ```python
+data = data["ECG"]
+
+suma=0
+for n in data:
+  suma= suma+n
+contador=0
+for c in data:
+  contador= contador+1
+media=suma/contador
+print(f"La media es:{media}")
+
+suma2 = 0
+contador2 = 0
+for num in data:
+    suma2= suma2+(num-media) ** 2
+for c in data:
+  contador2= contador2+1
+
+varianza =suma2 / (contador2)
+desviacion_p=(varianza)**(1/2)
+print(f"La Desviacion estandar de la población es: {desviacion_p}")
+
+suma3 = 0
+contador3 = 0
+for numer in data:
+    suma3= suma3+(numer-media) ** 2
+for c in data:
+  contador3= contador3+1
+
+varianza =suma3 / (contador3-1)
+desviacion_m= (varianza)**(1/2)
+print(f"La Desviacion estandar de la muestra es: {desviacion_m}")
+
+c_variacion=(desviacion_p/media)*100
+print(f"El coeficiente de variación es: {c_variacion} %")
+ ```
+Obteniendo así los siguientes resultados:
+La media es:425.55
+
+La Desviacion estandar de la población es: 63.938341392313355
+
+La Desviacion estandar de la muestra es: 63.97033455988576
+
+El coeficiente de variación es: 15.024871670147657 %
+ 
+- Calculos con funciones
+
+  ```python
+  data =data["ECG"]
+  media = np.mean(data)
+  mediana = np.median(data)
+  desviacion_poblacion = np.std(data)
+  desviacion_muestra = np.std(data, ddof=1)
+  curtosis_val = kurtosis(data)
+  coefvar = (desviacion_poblacion / media) * 100
+
+  print(f"Media: {media}")
+  print(f"Mediana: {mediana}")
+  print(f"Desviación estándar población: {desviacion_poblacion}")
+  print(f"Desviación estándar muestra: {desviacion_muestra}")
+  print(f"Curtosis: {curtosis_val}")
+  print(f"Coeficiente de variación: {coefvar}%")
+  ```
+
+Obteniendo los siguientes resultados:
+
+Media: 425.55
+
+Mediana: 411.0
+
+Desviación estándar población: 63.938341392313355
+
+Desviación estándar muestra: 63.97033455988576
+
+Curtosis: 5.278386377547983
+
+Coeficiente de variación: 15.024871670147657%
+
+Finalmente, se representa gráficamente la distribución de los datos mediante un histograma, al cual se le añade la curva que describe la función de probabilidad correspondiente.
+
+-Histograma:
+
+  ```python
+  plt.hist(data)
+  plt.grid()
+  plt.xlabel("Voltaje (mV)")
+  plt.ylabel("Frecuencia")
+  plt.title("Histograma B")
+  plt.show()
+```
+
+A continuación, se muestra una gráfica:
+<img width="801" height="568" alt="image" src="https://github.com/user-attachments/assets/f0ab3adf-03a6-484d-a869-785f649150d0" />
+
+-Histograma con funcion de probavilidad 
+
+  ```python
+  plt.hist(data,bins=30, density=True, alpha=0.8, color='purple')
+
+  kde = gaussian_kde(data)
+  x_vals = np.linspace(min(data), max(data), 1000)
+  plt.plot(x_vals, kde(x_vals), color='orange', linewidth=2)
+
+  plt.grid()
+  plt.xlabel("Voltaje (mV)")
+  plt.ylabel("Densidad de probabilidad")
+  plt.title("Histograma B con función de probabilidad")
+  plt.show()
+  ```
+
+  A continuación, se muestra una gráfica:
+<img width="842" height="571" alt="image" src="https://github.com/user-attachments/assets/55d1ec3b-c004-44d8-9ec7-c8205465fea6" />
+
 
 
