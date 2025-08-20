@@ -17,7 +17,14 @@ from scipy.stats import gaussian_kde
 
 ## Parte A
 
-En este primer apartado tomamos una señal electrocardiográfica de la plataforma Physionet, la cual estaba compuesta por varias señales por lo que seleccionamos una única señal para poder realizar un análisis de datos más preciso. Para este realizamos las siguientes líneas de código:
+En este primer apartado tomamos una señal electrocardiográfica de la plataforma Physionet, la cual estaba compuesta por varias señales por lo que seleccionamos una única señal para poder realizar un análisis de datos más preciso. 
+
+Se realizo el siguiente diagrama de flujo:
+
+![Imagen de WhatsApp 2025-08-19 a las 20 08 28_246ff55d](https://github.com/user-attachments/assets/3b0a878c-f986-4dc4-94ba-045f9d604e40)
+
+Para este realizamos las siguientes líneas de código:
+
 ```python
 signals,fields=wfdb.rdsamp('/content/43541326')
 signals
@@ -153,6 +160,10 @@ Obteniendo el siguiente gráfico:
   
 ## Parte B
 Para la segunda parte de este laboratorio, se utilizó una señal proveniente de un generador de señales biológicas. Esta señal fue procesada mediante un microcontrolador que fue un Arduino, el cual se encargó de capturarla y almacenarla. 
+
+Se realizo el siguiente diagrama de flujo:
+
+
 
 Utilizando las siguientes librerias 
   ```python
@@ -313,7 +324,9 @@ Para terminar este apartado se lleva a cabo una comparación entre los resultado
 
 ## Parte C
 
-La gráfica de la señal obtenida en la parte B se retoma en esta última parte de la práctica, para así poder contaminar la grafica con tres distintos ruidos, como se evidencia a continuación:
+La gráfica de la señal obtenida en la parte B se retoma en esta última parte de la práctica, para así poder contaminar la grafica con tres distintos ruidos, tambien se realizo un diagrama de flujo como se evidencia a continuación:
+
+
 
 ### 1) Contaminación de la grafica con ruido gaussiano
 
