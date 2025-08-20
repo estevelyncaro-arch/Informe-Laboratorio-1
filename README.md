@@ -148,7 +148,7 @@ Obteniendo el siguiente gráfico:
   
 Obteniendo el siguiente gráfico:
 
-  <img width="554" height="455" alt="image" src="https://github.com/user-attachments/assets/70ea64fd-04d5-44fd-b9f9-321945e4fb87" />
+  <img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/70ea64fd-04d5-44fd-b9f9-321945e4fb87" />
 
   
 ## Parte B
@@ -174,7 +174,8 @@ plt.show()
  ```
  
 Para así lograr la siguiente grafica:
-<img width="805" height="583" alt="image" src="https://github.com/user-attachments/assets/8600bbf6-15af-40f9-8d93-fe1d9402d9d0" />
+
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/8600bbf6-15af-40f9-8d93-fe1d9402d9d0" />
 
 Para luego realizar los calculos paso a paso como en la parte A:
   ```python
@@ -272,7 +273,8 @@ Finalmente, se representa gráficamente la distribución de los datos mediante u
 ```
 
 A continuación, se muestra una gráfica:
-<img width="801" height="568" alt="image" src="https://github.com/user-attachments/assets/f0ab3adf-03a6-484d-a869-785f649150d0" />
+
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/f0ab3adf-03a6-484d-a869-785f649150d0" />
 
 -Histograma con funcion de probavilidad 
 
@@ -291,7 +293,8 @@ A continuación, se muestra una gráfica:
   ```
 
   A continuación, se muestra una gráfica:
-<img width="842" height="571" alt="image" src="https://github.com/user-attachments/assets/55d1ec3b-c004-44d8-9ec7-c8205465fea6" />
+  
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/55d1ec3b-c004-44d8-9ec7-c8205465fea6" />
 
 Se lleva a cabo una comparación entre los resultados obtenidos de la parte A y la parte B 
 
@@ -303,7 +306,7 @@ La gráfica de la señal obtenida en la parte B se retoma en esta última parte 
 
  1) Contaminación de la grafica con ruido gaussiano
 
-El ruido gaussiano es un tipo de ruido aleatorio que sigue una distribución normal (o gaussiana) en cuanto a su amplitud.
+El ruido gaussiano es un tipo de ruido aleatorio que sigue una distribución normal (o gaussiana) en cuanto a su amplitud.Este ruido es tipico de procesos termico y ruido blanco.
 
 se realizo el siguiente codigo para el ruido gaussiano
 
@@ -325,6 +328,99 @@ se realizo el siguiente codigo para el ruido gaussiano
   plt.grid(True)
   plt.show()
  ```
+
+Teniendo así la siguiente grafica con su respectivo SNR:
+
+SNR (dB): 32.76257930112977
+
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/d8309307-9dd9-480f-a81b-1412390cb35a" />
+
+Obteniendo un SNR de 32.76257930112977 lo que significa que la señal es mucho más fuerte que el ruido 
+
+2) Contaminación de la grafica con ruido impulso
+
+Este reuido es un tipo de interferencia o distorcción que se caracteriza principalmente por pulsos breves, repentinos y de gran amplitud que aparece de manera espontanea en una señal.
+
+Para este ruido se realizo el siguiente codigo:
+
+ ```python
+x = data["ECG"]
+
+
+prob = 0.05   # PORCENTAJE DE PUNTOS  ALTERAADOS
+amplitud = np.max(x) * 0.5  # TAMAÑO DEL IMPULSO
+
+mask = np.random.rand(len(x)) < prob
+ruido = np.zeros_like(x)
+ruido[mask] = np.random.choice([+amplitud, -amplitud], size=mask.sum())
+y = x + ruido
+
+
+Psignal = np.mean(x**2)
+Pnoise  = np.mean((y - x)**2)
+SNR_dB  = 10*np.log10(Psignal / Pnoise)
+print(f"SNR (dB): {SNR_dB:.2f}")
+
+
+plt.plot(data["Tiempo"], x, label="Señal original")
+plt.plot(data["Tiempo"], y, label="Señal con ruido impulso", alpha=0.8)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud (mV)")
+plt.title(f"ECG con ruido impulso (SNR ≈ {SNR_dB:.1f} dB)")
+plt.legend()
+plt.grid(True)
+plt.show()
+ ```
+
+A continuacion la grafica con su respectivo SNR:
+
+SNR (dB): 13.39
+
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/2d6f50c0-9bfa-4800-8f9d-baf1afb91829" />
+
+
+Obteniendo un SNR de 13.39  lo que significa que la señal es más fuerte que el ruido 
+
+3) Contaminación de la grafica con ruido tipo artefacto
+
+El ruido tipo artefacto es un tipo de distorción no deseada que aparece en señales, imágenes, audio o video debido a procesos externos o limitaciones técnicas del sistema de adquisición, transmisión o compresión 
+
+Para este ruido se realizo el siguiente codigo:
+
+```python
+t = data["Tiempo"]
+x = data["ECG"]
+
+f_bw = 0.3                 # Hz, deriva de linea base
+A_bw = 0.3*np.std(x)       # amplitud de la deriva (ajusta 0.1–0.5)
+
+f_pl = 60.0
+A_pl = 0.1*np.std(x)       # amplitud de interferencia de red
+
+artefacto = A_bw*np.sin(2*np.pi*f_bw*t) + A_pl*np.sin(2*np.pi*f_pl*t)
+y = x + artefacto
+
+
+Psignal = np.mean(x**2)
+Pnoise  = np.mean((y - x)**2)
+SNR_dB  = 10*np.log10(Psignal / Pnoise)
+print(f"SNR (dB): {SNR_dB:.2f}")
+
+
+plt.plot(t, x, label="Señal original")
+plt.plot(t, y, label="Con artefacto", alpha=0.8)
+plt.xlabel("Tiempo (s)"); plt.ylabel("Amplitud (mV)")
+plt.title(f"ECG con ruido tipo artefacto (SNR ≈ {SNR_dB:.1f} dB)")
+plt.legend(); plt.grid(True); plt.show()
+```
+
+A continuacion la grafica con su respectivo SNR:
+
+SNR (dB): 29.57
+
+<img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/6bbe92fe-9c01-439c-8797-ac9f0e9cbcb0" />
+
+Obteniendo un SNR de 29.57 lo que significa que la señal es 29.57 veces la potencia del ruido teniendo asi buena calidad 
 
 
 
