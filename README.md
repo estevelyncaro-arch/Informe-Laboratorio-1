@@ -296,3 +296,35 @@ A continuación, se muestra una gráfica:
 Se lleva a cabo una comparación entre los resultados obtenidos de la parte A y la parte B 
 
 
+
+## Parte C
+
+La gráfica de la señal obtenida en la parte B se retoma en esta última parte de la práctica, para así poder contaminar la grafica con tres distintos ruidos, como se evidencia a continuación:
+
+ 1) Contaminación de la grafica con ruido gaussiano
+
+El ruido gaussiano es un tipo de ruido aleatorio que sigue una distribución normal (o gaussiana) en cuanto a su amplitud.
+
+se realizo el siguiente codigo para el ruido gaussiano
+
+ ```Python
+  ruido = np.random.normal(8, 6, size=data["ECG"].shape)
+  y = data["ECG"] + ruido
+
+  Psignal = np.mean(data["ECG"]**2)
+  Pnoise  = np.mean((y - data["ECG"])**2)
+  SNR_dB  = 10 * np.log10(Psignal / Pnoise)
+  print("SNR (dB):", SNR_dB)
+
+  plt.plot(data["Tiempo"], data["ECG"], label="Señal original")
+  plt.plot(data["Tiempo"], y, label="Señal con ruido", alpha=0.7)
+  plt.title(f"Señal ECG con y sin ruido (SNR ≈ {SNR_dB:.2f} dB)")
+  plt.xlabel("Tiempo (s)")
+  plt.ylabel("Amplitud (mV)")
+  plt.legend()
+  plt.grid(True)
+  plt.show()
+ ```
+
+
+
