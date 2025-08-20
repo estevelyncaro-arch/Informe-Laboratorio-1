@@ -163,6 +163,8 @@ Para la segunda parte de este laboratorio, se utilizó una señal proveniente de
 
 Se realizo el siguiente diagrama de flujo:
 
+![Imagen de WhatsApp 2025-08-19 a las 21 08 32_0802b95c](https://github.com/user-attachments/assets/fc93a194-c1b5-444b-90a5-da1bebd39792)
+
 
 
 Utilizando las siguientes librerias 
@@ -326,6 +328,7 @@ Para terminar este apartado se lleva a cabo una comparación entre los resultado
 
 La gráfica de la señal obtenida en la parte B se retoma en esta última parte de la práctica, para así poder contaminar la grafica con tres distintos ruidos, tambien se realizo un diagrama de flujo como se evidencia a continuación:
 
+![Imagen de WhatsApp 2025-08-19 a las 21 09 48_6f3fd5f1](https://github.com/user-attachments/assets/7aa75d31-a2f9-4708-bed9-7bda6a436776)
 
 
 ### 1) Contaminación de la grafica con ruido gaussiano
