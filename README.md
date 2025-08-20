@@ -296,15 +296,26 @@ A continuación, se muestra una gráfica:
   
 <img width="596" height="455" alt="image" src="https://github.com/user-attachments/assets/55d1ec3b-c004-44d8-9ec7-c8205465fea6" />
 
-Se lleva a cabo una comparación entre los resultados obtenidos de la parte A y la parte B 
+
+Para terminar este apartado se lleva a cabo una comparación entre los resultados obtenidos de la parte A y la parte B 
+
+### Comparación de Datos Estadísticos
 
 
+| **Métrica**              | **Señal A** | **Señal B** | **Interpretación** |
+|-------------------------|----------------|----------------|---------------------|
+| **Media**               | 0.0407         | 425.55         | La señal B tiene valores mucho más altos . |
+| **Mediana**             | 0.0            | 411.0          | La señal A sus datos tienden a 0 y la señal B a 411.0. |
+| **Desv. Estándar (Pob.)** | 0.1608       | 63.9383        | A la señal B le varian más los datos que a la señal A. |
+| **Desv. Estándar (Mues.)** | 0.1608      | 63.9703        | Anbas señales tienen misma tendencia que arriba. |
+| **Coef. Variación (%)** | 395.03%        | 15.02%         | La señal A es muy inestable a comparacion de la señal B que es más consistente. |
+| **Curtosis**            | 14.97          | 5.27           | La señal A tiene más valores extremos que la señal B. |
 
 ## Parte C
 
 La gráfica de la señal obtenida en la parte B se retoma en esta última parte de la práctica, para así poder contaminar la grafica con tres distintos ruidos, como se evidencia a continuación:
 
- 1) Contaminación de la grafica con ruido gaussiano
+### 1) Contaminación de la grafica con ruido gaussiano
 
 El ruido gaussiano es un tipo de ruido aleatorio que sigue una distribución normal (o gaussiana) en cuanto a su amplitud.Este ruido es tipico de procesos termico y ruido blanco.
 
@@ -337,7 +348,7 @@ SNR (dB): 32.76257930112977
 
 Obteniendo un SNR de 32.76257930112977 lo que significa que la señal es mucho más fuerte que el ruido 
 
-2) Contaminación de la grafica con ruido impulso
+### 2) Contaminación de la grafica con ruido impulso
 
 Este reuido es un tipo de interferencia o distorcción que se caracteriza principalmente por pulsos breves, repentinos y de gran amplitud que aparece de manera espontanea en una señal.
 
@@ -381,7 +392,7 @@ SNR (dB): 13.39
 
 Obteniendo un SNR de 13.39  lo que significa que la señal es más fuerte que el ruido 
 
-3) Contaminación de la grafica con ruido tipo artefacto
+### 3) Contaminación de la grafica con ruido tipo artefacto
 
 El ruido tipo artefacto es un tipo de distorción no deseada que aparece en señales, imágenes, audio o video debido a procesos externos o limitaciones técnicas del sistema de adquisición, transmisión o compresión 
 
