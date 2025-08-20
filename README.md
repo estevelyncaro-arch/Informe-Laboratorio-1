@@ -114,7 +114,7 @@ El coeficiente de variación es: 395.03291777363165 %
 
   la curtosis es igual a 14.97171146732827
 
-La curtosis nos da 14.97171146732827 devido a que la distribucion tiene un pico muy alto y angosto, tiene colas muy largas lo que indica precensia de valores atipicos 
+La curtosis da 14.97171146732827 lo que significa que la distribucion tiene un pico muy alto y angosto, tiene colas muy largas lo que indica precensia de valores atipicos 
 
   Finalmente se realiza el histograma de los datos y se le adiciona la función de probabilidad como se muestra a continuación:
 - Histograma:
@@ -252,9 +252,11 @@ Desviación estándar población: 63.938341392313355
 
 Desviación estándar muestra: 63.97033455988576
 
+Coeficiente de variación: 15.024871670147657%
+
 Curtosis: 5.278386377547983
 
-Coeficiente de variación: 15.024871670147657%
+La curtosis da 5.278386377547983 lo que significa que el pico centra es más alto que una distrubucion normal, tiene colas más pesadas, es mas alto pero más ancho. 
 
 Finalmente, se representa gráficamente la distribución de los datos mediante un histograma, al cual se le añade la curva que describe la función de probabilidad correspondiente.
 
@@ -291,5 +293,6 @@ A continuación, se muestra una gráfica:
   A continuación, se muestra una gráfica:
 <img width="842" height="571" alt="image" src="https://github.com/user-attachments/assets/55d1ec3b-c004-44d8-9ec7-c8205465fea6" />
 
+Se lleva a cabo una comparación entre los resultados obtenidos de la parte A y la parte B 
 
 
